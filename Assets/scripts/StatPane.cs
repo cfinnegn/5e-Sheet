@@ -34,6 +34,7 @@ public class StatPane : MonoBehaviour {
 		if(ModVal < 0) { ModPane.color = minus; }
 		else if(ModVal == 0) { ModPane.color = zero; }
 		else { ModPane.color = plus; }
+		GameObject.Find("EventSystem").BroadcastMessage("on_stat_change");
 	}
 
 	public void stat_up() {

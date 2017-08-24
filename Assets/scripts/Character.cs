@@ -43,13 +43,33 @@ public class Character : MonoBehaviour {
 	public Text hdtxt2;
 
 	[Header("Skills/Saves")]
-	public bool yes;
+	public SkillBox[] skills = new SkillBox[18];
+
+	public SkillBox[] save_throws = new SkillBox[6];
 	// Use this for initialization
 	void Start() {
 		update_prof();
 		updateAC(0);
 		updateHP(0);
 		updateSpeed(0);
+
+		// skillbox init
+		int i = 0;
+		while(i < 18) {
+			if(i < 1) { skills[i].init_stat(Str); }
+			else if(i < 4) { skills[i].init_stat(Dex); }
+			else if(i < 9) { skills[i].init_stat(Int); }
+			else if(i < 14) { skills[i].init_stat(Wis); }
+			else { skills[i].init_stat(Cha); }
+			i++;
+		}
+
+		save_throws[0].init_stat(Str);
+		save_throws[1].init_stat(Dex);
+		save_throws[2].init_stat(Con);
+		save_throws[3].init_stat(Int);
+		save_throws[4].init_stat(Wis);
+		save_throws[5].init_stat(Cha);
 	}
 
 	// Update is called once per frame
